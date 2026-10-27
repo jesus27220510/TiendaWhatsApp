@@ -1,0 +1,40 @@
+{
+  "name": "bionut",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "engines": {
+    "node": ">=24 <25",
+    "npm": ">=11 <12"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "node scripts/build.mjs",
+    "start": "node scripts/start.mjs",
+    "lint": "eslint .",
+    "test": "npm run test --workspaces",
+    "db:init": "node server/scripts/db-init.js",
+    "admin:create": "node server/scripts/admin-create.js",
+    "test:setup": "playwright install chromium",
+    "test:e2e": "playwright test",
+    "test:performance": "node tests/performance/catalog.mjs",
+    "env:init": "node scripts/setup-env.mjs",
+    "preview:https": "node scripts/https-local.mjs",
+    "test:commands": "node tests/commands/smoke.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.0",
+    "@playwright/test": "^1.56.0",
+    "concurrently": "^9.2.0",
+    "eslint": "^9.39.0",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^16.0.0",
+    "prettier": "3.9.10",
+    "selfsigned": "^3.0.1",
+    "vitest": "5.0.5"
+  }
+}

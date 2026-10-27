@@ -1,0 +1,1 @@
+CREATE TABLE admins(id INTEGER PRIMARY KEY CHECK(id=1),username TEXT NOT NULL UNIQUE CHECK(length(username) BETWEEN 3 AND 64),password_hash TEXT NOT NULL,created_at TEXT NOT NULL);

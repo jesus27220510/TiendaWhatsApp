@@ -13,13 +13,13 @@ Secciones eliminadas: ninguna; se reemplaza el contenido de ejemplo de la planti
 TODO pendientes: ninguno.
 Retirar este informe temporal después de su revisión y antes de confirmar el archivo en Git.
 -->
-# TiendaWhatsApp Constitution
+# BioNut Constitution
 
 ## Core Principles
 
 ### I. Simplicidad ante todo
 
-TiendaWhatsApp es una versión 1. Ante dos soluciones que satisfacen los mismos requisitos,
+BioNut es una versión 1. Ante dos soluciones que satisfacen los mismos requisitos,
 se DEBE elegir la más simple de implementar, comprender y mantener. Toda complejidad adicional
 DEBE justificar una necesidad actual de la spec. NO se permite anticipar funcionalidades,
 infraestructura ni autenticación compleja para necesidades futuras.
@@ -105,7 +105,7 @@ altere estos procedimientos DEBE actualizar su documentación en la misma entreg
 
 ## Alcance y tratamiento de datos
 
-TiendaWhatsApp es un catálogo comercial web con pedidos directos por WhatsApp. La spec DEBE
+BioNut es un catálogo comercial web con pedidos directos por WhatsApp. La spec DEBE
 precisar el catálogo, las operaciones administrativas y los datos del pedido dentro de estos
 límites; esta constitución no selecciona tecnologías ni incorpora funcionalidades adicionales.
 
@@ -144,6 +144,6 @@ el trabajo que dependa de ellos.
 El versionado sigue MAJOR.MINOR.PATCH: MAJOR para eliminar o redefinir principios de forma
 incompatible; MINOR para añadir principios o ampliar materialmente las obligaciones;
 PATCH para aclaraciones y correcciones que no cambien las obligaciones. La versión 1.0.0
-representa la adopción inicial de los once principios de TiendaWhatsApp.
+representa la adopción inicial de los once principios de BioNut.
 
 **Version**: 1.0.0 | **Ratified**: 2026-10-26 | **Last Amended**: 2026-10-26

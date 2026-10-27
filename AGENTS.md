@@ -1,8 +1,8 @@
-# AGENTS.md — TiendaWhatsApp
+# AGENTS.md — BioNut
 
 ## Proyecto y objetivo
 
-TiendaWhatsApp es una aplicación web de catálogo comercial para preparar pedidos y abrir
+BioNut es una aplicación web de catálogo comercial para preparar pedidos y abrir
 su resumen en WhatsApp. Las decisiones de producto deben respetar la constitución y la
 spec aprobada. Este archivo guía el trabajo técnico; no amplía el alcance del producto.
 Antes de trabajar, leer `.specify/memory/constitution.md`, `specs/README.md` y los artefactos
@@ -13,13 +13,13 @@ de la funcionalidad correspondiente. Preferir la solución más simple para la v
 Stack obligatorio: React, Vite, Node.js, Express y SQLite. Usar npm para gestionar dependencias.
 La implementación debe fijar y documentar las versiones compatibles de Node.js y npm.
 
-Estructura objetivo, todavía pendiente de implementación:
+Estructura implementada (Node.js 24.22.1 y npm 11.19.1 comprobados):
 
-- `frontend/`: aplicación React con Vite. Componentes de presentación, páginas, estado de
+- `client/`: aplicación React con Vite. Componentes de presentación, páginas, estado de
   selección de productos y cliente HTTP para consumir la API. No accede directamente a SQLite.
-- `backend/`: servidor Node.js con Express. Rutas bajo `/api`, validación, autorización,
+- `server/`: servidor Node.js con Express. Rutas bajo `/api`, validación, autorización,
   reglas de negocio y acceso a SQLite. Separar estas responsabilidades sin crear capas vacías.
-- `backend/data/`: ubicación predeterminada de la base SQLite local, configurable por entorno.
+- `server/data/`: ubicación predeterminada de la base SQLite local, configurable por entorno.
   No publicar la base de datos ni sus archivos auxiliares; documentar inicialización y respaldo.
 - `specs/`: especificaciones, planes, tareas y evidencias de aceptación por funcionalidad.
 - `package.json` raíz: scripts que coordinan frontend y backend mediante npm workspaces.
@@ -31,12 +31,9 @@ como enteros en céntimos para evitar errores de redondeo; formatearlos al prese
 
 ## Instalación, ejecución y pruebas
 
-Estado actual: todavía no existen `package.json`, aplicaciones ni scripts npm. Los comandos
-siguientes son un contrato de implementación, no comandos actualmente disponibles. Antes de
-dar por terminada la implementación, todos deben existir, ejecutar trabajo real y verificarse
-desde la raíz del repositorio. No crear scripts vacíos ni comandos que simulen éxito.
+Los comandos siguientes existen en los workspaces. Ejecutarlos desde la raíz y consultar README.md para entorno, HTTPS, pruebas de navegador y evidencias. No crear scripts vacíos ni comandos que simulen éxito.
 
-| Comando desde la raíz | Comportamiento requerido al terminar la implementación |
+| Comando desde la raíz | Comportamiento implementado |
 | --- | --- |
 | `npm install` | Instalar las dependencias de la raíz, frontend y backend. |
 | `npm ci` | Instalar de forma reproducible usando el `package-lock.json` versionado. |
@@ -115,6 +112,35 @@ No declarar terminada una funcionalidad con pruebas fallidas o criterios sin ver
   No publicar, fusionar ni reescribir historial sin autorización del usuario.
 - Si falta identidad de Git, solicitar los datos; no inventar nombre o correo.
 
+## Convención: cerrar la feature
+
+Cuando el usuario diga «cerrar la feature», esa instrucción autoriza integrar y publicar
+la feature y eliminar sus ramas local y remota siguiendo este procedimiento:
+
+1. Identificar la rama feature y su remoto. Revisar `git status`, los cambios pendientes
+   y el diff, incluidos archivos nuevos. No perder cambios ni incluir secretos o trabajo
+   ajeno. Confirmar en commits los cambios de la feature revisados antes de integrar;
+   si no se puede dejar el árbol limpio sin afectar trabajo ajeno, detenerse e informar.
+2. Ejecutar `npm run lint`, `npm test`, `npm run build` y `npm run test:e2e` desde la raíz.
+   Si alguna verificación falla, detener el cierre: no fusionar, publicar ni borrar ramas.
+3. Actualizar las referencias del remoto con `git fetch <remoto>`, cambiar a `main`
+   mediante `git switch main` y actualizarla con `git pull --ff-only <remoto> main`.
+4. Integrar mediante `git merge --no-ff <rama-feature>`. Si hay conflictos o falla el
+   merge, detenerse y comunicar el estado; no borrar la rama ni publicar una integración
+   incompleta. Repetir las verificaciones del paso 2 sobre el resultado integrado antes
+   de publicarlo; detenerse si fallan.
+5. Tras completar correctamente el merge y las verificaciones, subir main con
+   `git push <remoto> main`. Solo después de confirmar ese push, eliminar la rama local
+   con `git branch -d <rama-feature>` y la remota con
+   `git push <remoto> --delete <rama-feature>`. Si la rama remota no existe, registrar
+   ese paso como no aplicable. No usar borrado forzado ni force push.
+6. Mostrar el historial con `git log --oneline --graph -10`.
+
+Ejecutar los comandos secuencialmente y comprobar su resultado. Si falla cualquier comando,
+detener los pasos posteriores e indicar el comando fallido, los pasos completados y los
+que siguen pendientes. No afirmar que el cierre terminó si faltan publicación o limpieza.
+Los marcadores `<remoto>` y `<rama-feature>` deben sustituirse por valores comprobados.
+
 ## Idioma y moneda
 
 Todo texto visible, errores, instrucciones y mensajes de pedido deben usar español de Perú.
@@ -127,6 +153,6 @@ celulares y PC y permitir completar las acciones mediante controles accesibles.
 
 Actualizar `specs/README.md` cuando cambie el estado real de una funcionalidad. Enlazar su
 spec, plan, tareas y evidencias cuando existan, distinguir pendiente, en curso y verificado,
-y registrar bloqueos. No marcar como implementados los contratos descritos en este archivo.
+y registrar bloqueos. Marcar como verificados solo los contratos respaldados por pruebas ejecutadas.
 
 Las reglas de producto viven en .specify/memory/constitution.md y el estado del producto en specs/README.md
