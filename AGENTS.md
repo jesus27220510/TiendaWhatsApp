@@ -1,8 +1,8 @@
-# AGENTS.md — TiendaWhatsApp
+# AGENTS.md — BioNut
 
 ## Proyecto y objetivo
 
-TiendaWhatsApp es una aplicación web de catálogo comercial para preparar pedidos y abrir
+BioNut es una aplicación web de catálogo comercial para preparar pedidos y abrir
 su resumen en WhatsApp. Las decisiones de producto deben respetar la constitución y la
 spec aprobada. Este archivo guía el trabajo técnico; no amplía el alcance del producto.
 Antes de trabajar, leer `.specify/memory/constitution.md`, `specs/README.md` y los artefactos
@@ -13,13 +13,13 @@ de la funcionalidad correspondiente. Preferir la solución más simple para la v
 Stack obligatorio: React, Vite, Node.js, Express y SQLite. Usar npm para gestionar dependencias.
 La implementación debe fijar y documentar las versiones compatibles de Node.js y npm.
 
-Estructura objetivo, todavía pendiente de implementación:
+Estructura implementada (Node.js 24.22.1 y npm 11.19.1 comprobados):
 
-- `frontend/`: aplicación React con Vite. Componentes de presentación, páginas, estado de
+- `client/`: aplicación React con Vite. Componentes de presentación, páginas, estado de
   selección de productos y cliente HTTP para consumir la API. No accede directamente a SQLite.
-- `backend/`: servidor Node.js con Express. Rutas bajo `/api`, validación, autorización,
+- `server/`: servidor Node.js con Express. Rutas bajo `/api`, validación, autorización,
   reglas de negocio y acceso a SQLite. Separar estas responsabilidades sin crear capas vacías.
-- `backend/data/`: ubicación predeterminada de la base SQLite local, configurable por entorno.
+- `server/data/`: ubicación predeterminada de la base SQLite local, configurable por entorno.
   No publicar la base de datos ni sus archivos auxiliares; documentar inicialización y respaldo.
 - `specs/`: especificaciones, planes, tareas y evidencias de aceptación por funcionalidad.
 - `package.json` raíz: scripts que coordinan frontend y backend mediante npm workspaces.
@@ -31,12 +31,9 @@ como enteros en céntimos para evitar errores de redondeo; formatearlos al prese
 
 ## Instalación, ejecución y pruebas
 
-Estado actual: todavía no existen `package.json`, aplicaciones ni scripts npm. Los comandos
-siguientes son un contrato de implementación, no comandos actualmente disponibles. Antes de
-dar por terminada la implementación, todos deben existir, ejecutar trabajo real y verificarse
-desde la raíz del repositorio. No crear scripts vacíos ni comandos que simulen éxito.
+Los comandos siguientes existen en los workspaces. Ejecutarlos desde la raíz y consultar README.md para entorno, HTTPS, pruebas de navegador y evidencias. No crear scripts vacíos ni comandos que simulen éxito.
 
-| Comando desde la raíz | Comportamiento requerido al terminar la implementación |
+| Comando desde la raíz | Comportamiento implementado |
 | --- | --- |
 | `npm install` | Instalar las dependencias de la raíz, frontend y backend. |
 | `npm ci` | Instalar de forma reproducible usando el `package-lock.json` versionado. |
@@ -127,6 +124,6 @@ celulares y PC y permitir completar las acciones mediante controles accesibles.
 
 Actualizar `specs/README.md` cuando cambie el estado real de una funcionalidad. Enlazar su
 spec, plan, tareas y evidencias cuando existan, distinguir pendiente, en curso y verificado,
-y registrar bloqueos. No marcar como implementados los contratos descritos en este archivo.
+y registrar bloqueos. Marcar como verificados solo los contratos respaldados por pruebas ejecutadas.
 
 Las reglas de producto viven en .specify/memory/constitution.md y el estado del producto en specs/README.md
