@@ -1,0 +1,3 @@
+CREATE TABLE products(id TEXT PRIMARY KEY,name TEXT NOT NULL CHECK(length(trim(name)) BETWEEN 1 AND 100),description TEXT NOT NULL CHECK(length(trim(description)) BETWEEN 1 AND 1000),price_cents INTEGER NOT NULL CHECK(typeof(price_cents)='integer' AND price_cents BETWEEN 1 AND 99999999),image_url TEXT CHECK(image_url IS NULL OR length(image_url)<=2048),version INTEGER NOT NULL DEFAULT 1 CHECK(version>0),created_at TEXT NOT NULL,updated_at TEXT NOT NULL);
+CREATE TABLE settings(id INTEGER PRIMARY KEY CHECK(id=1),whatsapp_number TEXT,version INTEGER NOT NULL DEFAULT 1,updated_at TEXT NOT NULL);
+INSERT INTO settings VALUES(1,NULL,1,strftime('%Y-%m-%dT%H:%M:%fZ','now'));
