@@ -40,3 +40,5 @@ El número del vendedor solicitado quedó configurado en SQLite. Finalizar pedid
 Configuración documentada: `.env.example` incluye comentarios sin secretos; README explica la creación administrativa interactiva, `SESSION_SECRET` generado por `env:init` y WhatsApp configurable en SQLite desde Administración. Verificación del 2026-10-27: 7 pruebas de configuración, creación administrativa, autenticación, ajustes y seguridad aprobadas. Git ignora `.env`, no lo tiene versionado y permite `.env.example`. Esta actualización no modifica credenciales ni el entorno local existente.
 
 Nombre comercial actualizado a BioNut por solicitud del propietario. Se conservan las rutas de especificaciones y la rama existentes para mantener sus referencias.
+
+Cierre de rama solicitado el 2026-10-27: lint, 43 pruebas Vitest, build, 28 pruebas E2E, rendimiento (500 productos/20 lectores) y comandos reales aprobados antes de integrar. Las tareas de convergencia y aceptación humana indicadas arriba siguen pendientes; integrar la rama no las completa.
