@@ -1,6 +1,6 @@
 # Estado de BioNut
 
-Actualizado: 2026-10-27. Rama: 001-tienda-whatsapp.
+Actualizado: 2026-10-27. Rama integrada: main (feature original: 001-tienda-whatsapp).
 
 Aplicación implementada con React/Vite, Express y SQLite. Catálogo público, búsqueda por nombre, carrito, mensaje de WhatsApp, administración autenticada, CRUD, configuración del vendedor y persistencia disponibles. Sin pagos, facturación ni registro de clientes.
 
@@ -33,7 +33,7 @@ Aplicación implementada con React/Vite, Express y SQLite. Catálogo público, b
 
 requirements.md mantiene 16/16 marcas documentales; review.md mantiene sus 36 ítems pendientes del revisor. El usuario autorizó continuar sin modificarlos. Su estado no se confunde con el progreso del código.
 
-T001–T059, T062, T063 y T071 cuentan con implementación y evidencia. Las otras brechas de convergencia y T060 permanecen abiertas. No se afirma que una persona no técnica o una segunda persona haya completado la aceptación. No hubo despliegue, publicación ni envío de mensajes. Los cambios están en el directorio de trabajo para revisión.
+T001–T059, T062, T063 y T071 cuentan con implementación y evidencia. Las otras brechas de convergencia y T060 permanecen abiertas. No se afirma que una persona no técnica o una segunda persona haya completado la aceptación. No hubo despliegue ni envío de mensajes. La integración Git no sustituye la aceptación pendiente.
 
 El número del vendedor solicitado quedó configurado en SQLite. Finalizar pedido y sus avisos están comprobados; detalle en [verificación de WhatsApp](001-tienda-whatsapp/evidence/whatsapp-checkout.md).
 
@@ -42,3 +42,5 @@ Configuración documentada: `.env.example` incluye comentarios sin secretos; REA
 Nombre comercial actualizado a BioNut por solicitud del propietario. Se conservan las rutas de especificaciones y la rama existentes para mantener sus referencias.
 
 Cierre de rama solicitado el 2026-10-27: lint, 43 pruebas Vitest, build, 28 pruebas E2E, rendimiento (500 productos/20 lectores) y comandos reales aprobados antes de integrar. Las tareas de convergencia y aceptación humana indicadas arriba siguen pendientes; integrar la rama no las completa.
+
+Merge --no-ff completado sin conflictos en main, creada desde origin/master porque main no existía. Verificaciones posteriores al merge: lint, 43 pruebas Vitest, build y 28 pruebas E2E aprobadas. Se conserva master; publicación y eliminación de la rama feature se comprueban mediante Git.
